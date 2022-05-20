@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(private authSvc:AuthService) { }
+  constructor(private authSvc:AuthService, private route: Router) { }
 
   ngOnInit() {
   }
@@ -17,7 +18,7 @@ export class RegisterPage implements OnInit {
     try {
       const user = await this.authSvc.register(email.value, password.value);
       if (user) {
-        console.log('User -->', user);
+        this.route.navigate(['login']);
       }
     } catch (error) {
       console.log('Error', error);

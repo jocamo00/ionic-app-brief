@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Woocommerce</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card *ngFor="let product of products" size="3">
+    <ion-img [src]="product.images[0].src" alt="{{ product.name }}"></ion-img>
+    <ion-card-header>
+      <ion-title> {{ product.name }} </ion-title>
+    </ion-card-header>
+    <ion-card-content> {{ product.short_description}} </ion-card-content>
+    <ion-button href="#" role="button">Comprar <span> | {{ product.regular_price }} €</span></ion-button>
+  </ion-card>
+
+</ion-content>

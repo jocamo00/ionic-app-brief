@@ -54,6 +54,11 @@ export class AuthService {
   }
 
 
+  isEmailVerified( user: User ): boolean {
+    return user.emailVerified === true ? true : false;
+  }
+
+
   async logout(): Promise<void> {
     try {
       await this.afAuth.signOut();
