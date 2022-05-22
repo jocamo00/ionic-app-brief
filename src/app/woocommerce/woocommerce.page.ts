@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { WoocommerceService } from '../services/woocommerce.service';
+import { map } from "rxjs/operators"; 
+import { of } from 'rxjs/internal/observable/of';
+
 
 @Component({
   selector: 'app-woocommerce',
@@ -8,17 +10,22 @@ import { WoocommerceService } from '../services/woocommerce.service';
   styleUrls: ['./woocommerce.page.scss'],
 })
 export class WoocommercePage implements OnInit {
-  products: any[] = [];
+  products: any[];
   customer: string;
   secret: string;
   web: string;
+  txtBuscar= '';
+  //product: any[] = [];
+  searchProduct: string;
+  search = '';
+  query;
 
   constructor(private cardProduct: WoocommerceService) { 
     
   }
 
   ngOnInit() {
-
+    this.apiKeyWoocommerce();
   }
 
   apiKeyWoocommerce() {
