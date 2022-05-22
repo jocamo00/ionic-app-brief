@@ -9,10 +9,13 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginPage implements OnInit {
 
+
   constructor(private authSvc:AuthService, private route: Router) { }
+
 
   ngOnInit() {
   }
+
 
   async onLogin(email, password) {
     try {
@@ -34,5 +37,7 @@ export class LoginPage implements OnInit {
       this.route.navigate(['home']);
     } 
   }
+
+
 
 }

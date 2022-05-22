@@ -17,4 +17,8 @@ import { WoocommercePage } from './woocommerce.page';
   ],
   declarations: [WoocommercePage]
 })
-export class WoocommercePageModule {}
+export class WoocommercePageModule {
+
+}
+
+

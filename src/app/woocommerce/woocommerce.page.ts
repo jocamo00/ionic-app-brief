@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { WoocommerceService } from '../services/woocommerce.service';
 
 @Component({
@@ -8,17 +9,19 @@ import { WoocommerceService } from '../services/woocommerce.service';
 })
 export class WoocommercePage implements OnInit {
   products: any[] = [];
+  customer: any;
+  secret: any;
 
   constructor(private cardProduct: WoocommerceService) { 
     
   }
 
   ngOnInit() {
-    this.getProductsWoocommerce();
+
   }
 
-  private getProductsWoocommerce() {
-    this.cardProduct.getProducts()
+  apiKeyWoocommerce() {
+    this.cardProduct.getProducts(this.customer, this.secret)
       .subscribe( (data: any) => {
         console.log(data);
         this.products = data;

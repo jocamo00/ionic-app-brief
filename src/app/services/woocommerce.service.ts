@@ -8,10 +8,10 @@ export class WoocommerceService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(){
+ getProducts(customer: any, secret: any){
     const headers = new HttpHeaders({
       'Content-Type':  'application/json',
-      'Authorization': 'Basic ' + btoa('ck_0567ae24d036c4a8dde4bfed0806c1ae9f38476f' + ':' + 'cs_404aa57a2183b52e5ba2334f9e603f0062361ceb')
+      'Authorization': 'Basic ' + btoa(`${customer}` + ':' + `${secret}`)
     })
 
     return this.http.get('https://atum.betademo.es/wp-json/wc/v3/products', {headers});
