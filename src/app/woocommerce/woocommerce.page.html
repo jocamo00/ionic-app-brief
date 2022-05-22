@@ -22,18 +22,28 @@
       <button ion-button type="submit" block>ok</button>
   </form>
 
+
   <div class="form-inline barraNavSearch">
-    <input id="input-search" class="form-control" type="text" #txtBuscar placeholder="Search product" [(ngModel)]="query">
+    <input id="input-search" class="form-control" type="text" (keyup)="search( txtBuscar.value)" #txtBuscar placeholder="Search for a movie">
+    <button id="btnSearch" class="btn btnSearch" (click)="search( txtBuscar.value)" #txtBuscar>Search</button>
   </div>
   
-  <ion-card *ngFor="let product of products | search: query" size="3" (click)="navigateTo(product.id)">
+
+  <ion-card *ngFor="let product of products" size="3">
     <ion-img [src]="product.images[0].src" alt="{{ product.name }}"></ion-img>
     <ion-card-header>
       <ion-title> {{ product.name }} </ion-title>
     </ion-card-header>
     <ion-card-content> {{ product.short_description}} </ion-card-content>
-    <ion-button href="#" role="button">Comprar <span> | {{ product.regular_price }} €</span></ion-button>
+
   </ion-card>
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="nextPage()" expand="block">Next</ion-button>
+      <ion-button (click)="backPage()" expand="block">Back</ion-button>
+    </ion-col>
+  </ion-row>
 
 </ion-content>
 

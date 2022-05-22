@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { WoocommercePageRoutingModule } from './woocommerce-routing.module';
 
 import { WoocommercePage } from './woocommerce.page';
-import { SearchPipe } from '../shared/search.pipe';
+
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { SearchPipe } from '../shared/search.pipe';
     IonicModule,
     WoocommercePageRoutingModule
   ],
-  declarations: [WoocommercePage, SearchPipe]
+  declarations: [WoocommercePage]
 })
 export class WoocommercePageModule {
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WoocommerceService } from '../services/woocommerce.service';
-import { map } from "rxjs/operators"; 
-import { of } from 'rxjs/internal/observable/of';
 
 
 @Component({
@@ -14,11 +12,9 @@ export class WoocommercePage implements OnInit {
   customer: string;
   secret: string;
   web: string;
-  txtBuscar= '';
-  //product: any[] = [];
-  searchProduct: string;
-  search = '';
-  query;
+  txtSearch: string;
+
+
 
   constructor(private cardProduct: WoocommerceService) { 
     
@@ -31,9 +27,31 @@ export class WoocommercePage implements OnInit {
   apiKeyWoocommerce() {
     this.cardProduct.getProducts(this.web, this.customer, this.secret)
       .subscribe( (data: any) => {
-        console.log(data);
         this.products = data;
       });
   }
+
+  search(txtSearch: string) {
+    this.txtSearch = txtSearch;
+    this.cardProduct.getSearchProduct(this.txtSearch)
+      .subscribe( (data: any) => {
+        this.products = data;
+      });
+  }
+
+  nextPage(){
+    this.cardProduct.getNextProducts()
+      .subscribe( (data: any) => {
+        this.products = data;
+      });
+  }
+
+  backPage(){
+    this.cardProduct.getBackProducts()
+      .subscribe( (data: any) => {
+        this.products = data;
+      });
+  }
+
 
 }
