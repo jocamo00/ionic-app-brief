@@ -9,8 +9,9 @@ import { WoocommerceService } from '../services/woocommerce.service';
 })
 export class WoocommercePage implements OnInit {
   products: any[] = [];
-  customer: any;
-  secret: any;
+  customer: string;
+  secret: string;
+  web: string;
 
   constructor(private cardProduct: WoocommerceService) { 
     
@@ -21,7 +22,7 @@ export class WoocommercePage implements OnInit {
   }
 
   apiKeyWoocommerce() {
-    this.cardProduct.getProducts(this.customer, this.secret)
+    this.cardProduct.getProducts(this.web, this.customer, this.secret)
       .subscribe( (data: any) => {
         console.log(data);
         this.products = data;

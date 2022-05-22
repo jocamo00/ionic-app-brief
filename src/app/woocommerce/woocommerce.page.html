@@ -7,16 +7,20 @@
 <ion-content>
 
   <form (ngSubmit)="apiKeyWoocommerce()">
+    <ion-item>
+      <ion-label>URL Web</ion-label>
+      <ion-textarea [(ngModel)]="web" name="web" required></ion-textarea>
+    </ion-item>
       <ion-item>
         <ion-label>Key customer</ion-label>
-        <ion-input type="text" [(ngModel)]="customer" name="customer"></ion-input>
+        <ion-input type="text" [(ngModel)]="customer" name="customer" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Key secret</ion-label>
-        <ion-textarea [(ngModel)]="secret" name="secret"></ion-textarea>
+        <ion-textarea [(ngModel)]="secret" name="secret" required></ion-textarea>
       </ion-item>
       <button ion-button type="submit" block>ok</button>
-    </form>
+  </form>
   
   <ion-card *ngFor="let product of products" size="3">
     <ion-img [src]="product.images[0].src" alt="{{ product.name }}"></ion-img>

@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,8 +21,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), 
     AngularFireAuthModule,
-    HttpClientModule,
-    FormsModule],
+    HttpClientModule],
   providers: [{ 
     provide: RouteReuseStrategy, 
     useClass: IonicRouteStrategy 
