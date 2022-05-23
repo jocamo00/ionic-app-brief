@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { WoocommerceService } from '../services/woocommerce.service';
 
 
@@ -16,7 +18,7 @@ export class WoocommercePage implements OnInit {
 
 
 
-  constructor(private cardProduct: WoocommerceService) { 
+  constructor(private cardProduct: WoocommerceService, private authSvc:AuthService, private route: Router) { 
     
   }
 
@@ -27,6 +29,7 @@ export class WoocommercePage implements OnInit {
   apiKeyWoocommerce() {
     this.cardProduct.getProducts(this.web, this.customer, this.secret)
       .subscribe( (data: any) => {
+        console.log(data);
         this.products = data;
       });
   }
@@ -35,6 +38,7 @@ export class WoocommercePage implements OnInit {
     this.txtSearch = txtSearch;
     this.cardProduct.getSearchProduct(this.txtSearch)
       .subscribe( (data: any) => {
+        console.log(data);
         this.products = data;
       });
   }
@@ -51,6 +55,15 @@ export class WoocommercePage implements OnInit {
       .subscribe( (data: any) => {
         this.products = data;
       });
+  }
+
+  homePage() {
+    this.route.navigate(['home']);
+  }
+
+  logout() {
+    this.authSvc.logout();
+    this.route.navigate(['home']);
   }
 
 

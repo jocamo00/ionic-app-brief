@@ -1,25 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title><h1>Login</h1></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <form>
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" #email required></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" #password required></ion-input>
-    </ion-item>
+  <ion-grid>
 
     <ion-row>
-      <ion-col>
-        <ion-button type="submit" (click)="onLogin(email, password)" expand="block">Login</ion-button>
+
+      <ion-col size="2" size-lg="4"></ion-col>
+      <ion-col size="8" size-lg="4">
+        <form class="login">
+          <ion-item lines="full">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" #email required></ion-input>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" #password required></ion-input>
+          </ion-item>
+      
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" (click)="onLogin(email, password)" expand="block">Login</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
       </ion-col>
+      <ion-col size="2" size-lg="4"></ion-col>
     </ion-row>
-  </form>
+
+  </ion-grid>
+  
 </ion-content>
+
+
+
+
+

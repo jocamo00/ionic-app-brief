@@ -1,0 +1,46 @@
+ion-title h1 {
+    text-align: center;
+}
+
+ion-col.container-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content : center;
+}
+.container-products .card-product{
+    flex-grow: 1;
+    max-width: 15vw;
+}
+.card-product ion-card-content, .card-product ion-card-header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+ion-searchbar {
+    margin: 4rem 0rem;
+}
+
+ion-col.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+@media (min-width: 992px) { 
+    .name-product {
+        font-size: 1vw;
+    }
+ }
+
+
+@media (max-width: 991.98px) { 
+    .container-products .card-product {
+        max-width: 35vw;
+    }
+ }
+
+ @media (max-width: 575.98px) { 
+    .container-products .card-product {
+        max-width: 100vw;
+    }
+  }

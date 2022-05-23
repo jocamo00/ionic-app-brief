@@ -1,49 +1,84 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Woocommerce</ion-title>
+    <ion-title><h1>Woocommerce</h1></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <form (ngSubmit)="apiKeyWoocommerce()">
-    <ion-item>
-      <ion-label>URL Web</ion-label>
-      <ion-textarea [(ngModel)]="web" name="web" required></ion-textarea>
-    </ion-item>
-      <ion-item>
-        <ion-label>Key customer</ion-label>
-        <ion-input type="text" [(ngModel)]="customer" name="customer" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Key secret</ion-label>
-        <ion-textarea [(ngModel)]="secret" name="secret" required></ion-textarea>
-      </ion-item>
-      <button ion-button type="submit" block>ok</button>
-  </form>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1" size-lg="3"></ion-col>
+      <ion-col size="10" size-lg="6">
+      
+        <form (ngSubmit)="apiKeyWoocommerce()">
+          <ion-item>
+            <ion-label position="floating">URL Web</ion-label>
+            <ion-input [(ngModel)]="web" name="web" required></ion-input>
+          </ion-item>
+            <ion-item>
+              <ion-label position="floating">Key customer</ion-label>
+              <ion-input type="text" [(ngModel)]="customer" name="customer" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Key secret</ion-label>
+              <ion-input [(ngModel)]="secret" name="secret" required></ion-input>
+            </ion-item>
+            <ion-button type="submit" expand="block">ok</ion-button>
+            <ion-button color="light" (click)="homePage()">Home</ion-button>
+            <ion-button color="danger" id="btnLogout" (click)="logout()" #logout>Logout</ion-button>
+          </form>
+      </ion-col>
+      <ion-col size="1" size-lg="3"></ion-col>
+    </ion-row>
 
+    <ion-row>
+      <ion-col size="1" size-lg="3"></ion-col>
+      <ion-col size="10" size-lg="6">
+        <ion-item class="form-inline barraNavSearch">
+          <ion-searchbar (keyup)="search( txtBuscar.value)" #txtBuscar placeholder="Search product"></ion-searchbar>
+          <ion-button color="light" class="btn btnSearch" (click)="search( txtBuscar.value)" #txtBuscar>Search</ion-button>
+        </ion-item>
+      </ion-col>
+      <ion-col size="1" size-lg="3"></ion-col>
+    </ion-row>
 
-  <div class="form-inline barraNavSearch">
-    <input id="input-search" class="form-control" type="text" (keyup)="search( txtBuscar.value)" #txtBuscar placeholder="Search for a movie">
-    <button id="btnSearch" class="btn btnSearch" (click)="search( txtBuscar.value)" #txtBuscar>Search</button>
-  </div>
-  
+    <ion-row class="ion-justify-content-start">
+      <ion-col size="1" size-lg="2"></ion-col>
+      <ion-col class="container-products" size="10" size-lg="8">
+        <ion-card class="card-product" *ngFor="let product of products">
+    
+          <ion-img class="img-product" [src]="product.images[0].src" alt="{{ product.name }}"></ion-img>
+          <ion-card-header>
+            <ion-title class="name-product"> {{ product.name }} </ion-title>
+          </ion-card-header>
+      
+          <ion-card-content> 
+            <ion-label class="description-product">{{ product.short_description}}</ion-label>
+            <ion-label class="price-product">{{ product.price }}€</ion-label>
+          </ion-card-content>
+      
+        </ion-card>
+      </ion-col>
+      <ion-col size="1" size-lg="2"></ion-col>
+    </ion-row>
 
-  <ion-card *ngFor="let product of products" size="3">
-    <ion-img [src]="product.images[0].src" alt="{{ product.name }}"></ion-img>
-    <ion-card-header>
-      <ion-title> {{ product.name }} </ion-title>
-    </ion-card-header>
-    <ion-card-content> {{ product.short_description}} </ion-card-content>
+    <ion-row>
+      <ion-col size="1" size-lg="3"></ion-col>
+      <ion-col class="pagination" size="10" size-lg="6">
+        <ion-button class="btn-pagination" (click)="backPage()" expand="block"><-- Back</ion-button>
+        <ion-button class="btn-pagination" (click)="nextPage()" expand="block">Next --></ion-button>
+      </ion-col>
+      <ion-col size="1" size-lg="3"></ion-col>
+    </ion-row>
 
-  </ion-card>
+  </ion-grid>
 
-  <ion-row>
-    <ion-col>
-      <ion-button (click)="nextPage()" expand="block">Next</ion-button>
-      <ion-button (click)="backPage()" expand="block">Back</ion-button>
-    </ion-col>
-  </ion-row>
 
 </ion-content>
+
+
+
+
+
 

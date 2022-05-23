@@ -1,18 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="home">
+
+  <ion-grid>
 
     <ion-row>
-      <ion-col>
-        <ion-button (click)="login()" expand="block">Login</ion-button>
-        <ion-button (click)="register()" expand="block">Register</ion-button>
+      <ion-col size="2" size-lg="4"></ion-col>
+      <ion-col size="8" size-lg="4">
+          <ion-button (click)="login()" expand="full">Login</ion-button>
+          <p>or</p>
+          <ion-button  color="danger" (click)="register()" expand="full">Register</ion-button>
       </ion-col>
+      <ion-col size="2" size-lg="4"></ion-col>
     </ion-row>
+
+  </ion-grid>
 
 </ion-content>

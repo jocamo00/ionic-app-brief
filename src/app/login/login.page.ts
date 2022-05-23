@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   }
 
 
-  async onLogin(email, password) {
+  async onLogin(email: any, password: any) {
     try {
       const user = await this.authSvc.login(email.value, password.value);
       if (user) {
