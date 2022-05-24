@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./woocommerce/woocommerce.module').then( m => m.WoocommercePageModule)/*,
     canActivate:[AuthGuard]*/
   },
+  {
+    path: 'woocommerce',
+    loadChildren: () => import('./woocommerce/woocommerce.module').then( m => m.WoocommercePageModule)/*,
+    canActivate:[AuthGuard]*/
+  }
 ];
 
 @NgModule({

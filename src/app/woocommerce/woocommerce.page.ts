@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { WoocommerceService } from '../services/woocommerce.service';
+import { Product } from '../shared/product.interface';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { WoocommerceService } from '../services/woocommerce.service';
   styleUrls: ['./woocommerce.page.scss'],
 })
 export class WoocommercePage implements OnInit {
-  products: any[];
+  products: Product;
   customer: string;
   secret: string;
   web: string;
@@ -28,30 +29,28 @@ export class WoocommercePage implements OnInit {
 
   apiKeyWoocommerce() {
     this.cardProduct.getProducts(this.web, this.customer, this.secret)
-      .subscribe( (data: any) => {
-        console.log(data);
-        this.products = data;
+      .subscribe( (productos: Product) => {
+        this.products = productos;
       });
   }
 
   search(txtSearch: string) {
     this.txtSearch = txtSearch;
-    this.cardProduct.getSearchProduct(this.txtSearch)
+    this.cardProduct.getSearchProduct(this.txtSearch, this.web, this.customer, this.secret)
       .subscribe( (data: any) => {
-        console.log(data);
         this.products = data;
       });
   }
 
   nextPage(){
-    this.cardProduct.getNextProducts()
+    this.cardProduct.getNextProducts(this.web, this.customer, this.secret)
       .subscribe( (data: any) => {
         this.products = data;
       });
   }
 
   backPage(){
-    this.cardProduct.getBackProducts()
+    this.cardProduct.getBackProducts(this.web, this.customer, this.secret)
       .subscribe( (data: any) => {
         this.products = data;
       });

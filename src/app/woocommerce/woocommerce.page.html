@@ -46,7 +46,7 @@
     <ion-row class="ion-justify-content-start">
       <ion-col size="1" size-lg="2"></ion-col>
       <ion-col class="container-products" size="10" size-lg="8">
-        <ion-card class="card-product" *ngFor="let product of products">
+        <ion-card class="card-product" *ngFor="let product of products" [routerLink]="['/single-product', product.id]">
     
           <ion-img class="img-product" [src]="product.images[0].src" alt="{{ product.name }}"></ion-img>
           <ion-card-header>

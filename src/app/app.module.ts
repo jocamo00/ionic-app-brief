@@ -12,8 +12,9 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [	AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 

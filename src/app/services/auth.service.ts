@@ -4,6 +4,7 @@ import { User } from '../shared/user.interface';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { getAuth, signOut } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -66,7 +67,7 @@ export class AuthService {
       console.log('Error:', error);
     }
   }
-
+  
 
   private updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`user/${user.uid}`); 
