@@ -56,10 +56,6 @@ export class WoocommercePage implements OnInit {
       });
   }
 
-  homePage() {
-    this.route.navigate(['home']);
-  }
-
   logout() {
     this.authSvc.logout();
     this.route.navigate(['home']);

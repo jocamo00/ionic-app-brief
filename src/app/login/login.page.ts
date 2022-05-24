@@ -38,6 +38,11 @@ export class LoginPage implements OnInit {
     } 
   }
 
+  logout() {
+    this.authSvc.logout();
+    this.route.navigate(['home']);
+  }
+
 
 
 }

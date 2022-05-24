@@ -8,7 +8,7 @@
 
   <ion-grid>
 
-    <ion-row>
+    <ion-row class="form-access">
       <ion-col size="2" size-lg="4"></ion-col>
       <ion-col size="8" size-lg="4">
         <form>
@@ -24,6 +24,7 @@
           <ion-row>
             <ion-col>
               <ion-button type="submit" (click)="onRegister(email, password)" expand="block">Register</ion-button>
+              <ion-button color="danger" id="btnLogout" (click)="logout()">Logout</ion-button>
             </ion-col>
           </ion-row>
         </form>

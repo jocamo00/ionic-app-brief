@@ -15,12 +15,12 @@ export class AuthGuard implements CanActivate {
     
     return this.authSvc.user$.pipe(
       take(1),
-      map(user => {
+      map((user) => {
         console.log('User -->', user);
         if (user) {
           return true;
         } else {
-          this.router.navigate(['/login']);
+          this.router.navigate(['home']);
           return false;
         }
       })

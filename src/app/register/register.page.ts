@@ -25,4 +25,10 @@ export class RegisterPage implements OnInit {
     }
   }
 
+
+  logout() {
+    this.authSvc.logout();
+    this.route.navigate(['home']);
+  }
+
 }
